@@ -6,9 +6,9 @@ const {
     getAllUsers,
     getUser,
     deleteUser,
-} = require('../controllers/authController')
+    updateUser,
 
-
+} = require('../controllers/userController')
 
 // POST a new user 
 router.post('/signup', createUser)
@@ -20,10 +20,9 @@ router.get('/', getAllUsers)
 router.get('/:id', getUser)
 
 // UPDATE a user 
+router.put('/:id',updateUser)
 
 // DELETE a user 
 router.delete('/:id/delete',deleteUser)
-
-// UPDATE a user
 
 module.exports = router

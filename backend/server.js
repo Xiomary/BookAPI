@@ -3,6 +3,8 @@ const app = express();
 const cors = require('cors')
 const dbConnection = require('./db');
 const bookRoute = require('./routes/book');
+const userRoute = require('./routes/userRoutes');
+const { application } = require("express");
 
 require('dotenv').config();
 const SERVER_PORT = 8081
@@ -19,3 +21,5 @@ app.listen(SERVER_PORT, (req, res) => {
 })
 
 app.use('/api/books', bookRoute); 
+app.use('/api/users', userRoute);
+

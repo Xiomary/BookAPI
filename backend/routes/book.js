@@ -20,5 +20,6 @@ router.get('/', getAllBooks)
 // DELETE a book
 router.delete('/:id', deleteBook)
 
+// UPDATE a book
 router.put('/:id',updateBook)
 module.exports = router

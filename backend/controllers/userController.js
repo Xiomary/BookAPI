@@ -1,9 +1,18 @@
 const User = require("../models/userModel");
 
+const handleErrors = (err) => {
+  console.log(err.message, err.code);
+  let error = {email: '', password: ''}
+
+  // validation errors
+  if(err.message.includes('user validation failed')) {
+    console.log(err);
+  }
+}
+
 // Create a new user
 const createUser = async (req, res) => {
   const { username, email, password } = req.body;
-
   try {
     const user = await User.create({
       username: username,
