@@ -1,13 +1,58 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Quicksand"; 
+  color: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar h1 {
+  color: #f1356d;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color: #808080; 
+}
+
+.navbar a:hover {
+  color: #f1356d; 
+}
+
+.content {
+ max-width: 600px;
+ margin: 40px auto;
+ padding: 20px;
+}
+
+.book-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 3px solid #fafafa; /* Increased border width */
+}
+
+.book-preview:hover { 
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow for hover */
+}
+
+.book-preview h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 8px;
+  font-weight: bold; /* Emphasize heading text */
 }
