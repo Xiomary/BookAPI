@@ -1,7 +1,8 @@
+// userModel.js (without pre-save hook)
+
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { isEmail } = require("validator");
-const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   email: {
@@ -20,19 +21,6 @@ const userSchema = new Schema({
     type: Boolean,
     required: false,
   },
-});
-
-// function called before doc saves to the db
-
-userSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
-
-userSchema.post("save", function (doc, next) {
-  console.log(`Use has been saved successfully.`);
-  next();
 });
 
 module.exports = mongoose.model("User", userSchema);
