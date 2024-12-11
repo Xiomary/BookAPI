@@ -1,25 +1,27 @@
 const express = require("express");
-const app = express();
-const cors = require('cors')
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const dbConnection = require('./db');
-const bookRoute = require('./routes/book');
 const userRoute = require('./routes/userRoutes');
-const { application } = require("express");
-
 require('dotenv').config();
-const SERVER_PORT = 8081
- 
-dbConnection()
-app.use(cors({origin: '*'}))
 
-// middleware
-// tells express to parse json data in the upcoming requests 
-app.use(express.json())
+const app = express();
+const SERVER_PORT = 8081;
 
-app.listen(SERVER_PORT, (req, res) => {
-    console.log(`The backend service is running on port ${SERVER_PORT} and waiting for requests.`);
-})
+dbConnection();
 
-app.use('/api/books', bookRoute); 
+const corsOrigin = {
+  origin: 'http://localhost:3000', 
+  credentials: true,            
+  optionSuccessStatus: 200
+};
+
+app.use(cors(corsOrigin));
+app.use(express.json());
+app.use(cookieParser());
+
 app.use('/api/users', userRoute);
 
+app.listen(SERVER_PORT, () => {
+  console.log(`The backend service is running on port ${SERVER_PORT}`);
+});
